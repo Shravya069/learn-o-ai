@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Learn O AI</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f2fc;--card:#fff;--tx:#1d1b2e;--mu:#6b6880;--ac:#6c4cf1;--ac2:#eae5ff;--ok:#1c9c62;--md:#d98b0b;--bad:#d64545;--bd:#e3e0ee}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13111e;--card:#1e1b2d;--tx:#efedf8;--mu:#a29fb8;--ac:#9a82ff;--ac2:#2c2748;--ok:#3ecf8e;--md:#f0a93a;--bad:#f06a6a;--bd:#353050}}
+:root[data-theme="dark"]{--bg:#13111e;--card:#1e1b2d;--tx:#efedf8;--mu:#a29fb8;--ac:#9a82ff;--ac2:#2c2748;--ok:#3ecf8e;--md:#f0a93a;--bad:#f06a6a;--bd:#353050}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.w{max-width:760px;margin:0 auto;padding:14px}
+nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:20px;cursor:pointer}.logo span{color:var(--ac)}
+.pill{background:var(--ac2);color:var(--ac);border-radius:20px;padding:3px 12px;font-weight:700;font-size:14px}
+h1{font-size:34px;line-height:1.15;margin:8px 0}h2{font-size:20px;margin:0 0 8px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:12px}
+.hero{text-align:center;padding:28px 12px;background:linear-gradient(135deg,var(--ac2),var(--card));border-radius:20px;border:1px solid var(--bd)}
+.mas{font-size:84px;animation:b 2s infinite ease-in-out}@keyframes b{50%{transform:translateY(-8px)}}
+.mu{color:var(--mu);font-size:14px}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:10px 16px;background:var(--ac);color:#fff;font-weight:700}
+button.g{background:var(--ac2);color:var(--ac)}button:disabled{opacity:.4;cursor:default}
+.big{font-size:18px;padding:14px 24px;margin-top:10px}
+.drop{border:2px dashed var(--ac);border-radius:16px;padding:28px;text-align:center;background:var(--ac2);cursor:pointer}
+textarea,input[type=text],select{width:100%;border:1px solid var(--bd);border-radius:10px;padding:9px;font:inherit;background:var(--bg);color:var(--tx)}
+textarea{min-height:120px;font:14px/1.5 ui-monospace,Menlo,monospace}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.pick{border:2px solid var(--bd);border-radius:14px;padding:12px;text-align:center;cursor:pointer;background:var(--card)}
+.pick.sel{border-color:var(--ac);background:var(--ac2)}.pick b{display:block;font-size:34px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.stats div{background:var(--ac2);border-radius:10px;padding:8px 12px}.stats b{display:block;font-size:18px}
+.tp{display:flex;gap:6px;margin:4px 0}.tp input{padding:5px 8px}.tp button{padding:2px 10px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.bar{height:12px;border-radius:6px;background:var(--bd);overflow:hidden}.bar div{height:100%;transition:width .4s}
+.row{display:flex;justify-content:space-between;font-weight:700;margin-top:10px;gap:8px}
+.s{color:var(--ok)}.m{color:var(--md)}.wk{color:var(--bad)}
+.scene{text-align:center;padding:20px 10px;border-radius:14px;background:linear-gradient(160deg,#2a2160,#5a3fd0);color:#fff}
+.scene .e{font-size:64px}.sub{background:rgba(0,0,0,.45);border-radius:8px;padding:8px 12px;margin-top:10px;display:inline-block}
+.cc{display:inline-block;background:#fff;color:#4a34b8;border-radius:8px;padding:3px 12px;font-weight:800;margin-top:10px}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--tx);border:1px solid var(--bd);margin-top:6px;font-weight:400}
+.opt.sel{border-color:var(--ac);background:var(--ac2)}
+.q{margin-top:14px}.tm{position:sticky;top:0;background:var(--card);padding:6px;font-weight:800;border-radius:8px;text-align:center}
+
+.app{display:grid;grid-template-columns:200px 1fr;min-height:100vh}
+.sb{background:var(--card);border-right:1px solid var(--bd);padding:16px 12px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+.sb .ni{padding:9px 12px;border-radius:10px;cursor:pointer;font-weight:600;color:var(--mu)}.sb .ni.on{background:var(--ac2);color:var(--ac)}
+.sb .go{margin-top:auto;padding:12px}
+.mn{padding:14px 18px;max-width:900px;width:100%}
+.logo{font-weight:900;font-size:24px;background:linear-gradient(90deg,#ff5f6d,#ffb400,#2bbf7e,#3b82f6,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent;cursor:pointer;margin-bottom:14px}
+.top{display:flex;gap:10px;align-items:center;margin-bottom:14px}.top input{flex:1}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.cd{background:var(--card);border:2px solid var(--bd);border-radius:16px;padding:10px;text-align:center;cursor:pointer;position:relative}
+.cd.sel{border-color:var(--ac);background:var(--ac2)}.cd svg{width:86px;height:96px}.cd .ck{position:absolute;top:8px;right:8px;background:var(--ac);color:#fff;border-radius:50%;width:22px;height:22px;font-size:13px;line-height:22px}
+.room{position:relative;aspect-ratio:16/9;min-height:230px;border-radius:14px;overflow:hidden;background:linear-gradient(#f3e6c8 0 64%,#9ccf8e 64%)}
+.room .bd{position:absolute;right:5%;top:8%;width:54%;height:52%;background:#1f4d3a;border:6px solid #8a5a2b;border-radius:6px;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px}
+.room .bd .e{font-size:44px}.room .bd b{font-size:15px}
+.room .chr{position:absolute;left:5%;bottom:16%;width:96px;animation:hop 1s infinite alternate}@keyframes hop{to{transform:translateY(-8px)}}
+.room .sub{position:absolute;left:8px;right:8px;bottom:6px;background:rgba(0,0,0,.6);color:#fff;border-radius:8px;padding:6px 10px;font-size:14px}
+@media(max-width:700px){.app{grid-template-columns:1fr}.sb{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:8px}.sb .go{margin:0;margin-left:auto}.sb .logo{display:none}}
+</style></head><body><div class="app"><aside class="sb"><div class="logo" onclick="go('home')">Learn O ai</div>
+<div class="ni" data-v="home" onclick="go('home')">🏠 Home</div><div class="ni" data-v="up" onclick="go('up')">📤 Upload</div><div class="ni" data-v="chars" onclick="go(S.units.length?'chars':'up')">🎭 Characters</div><div class="ni" data-v="gen" onclick="go(S.units.length?'gen':'up')">🎬 Episodes</div><div class="ni" data-v="test" onclick="go(S.res||S.sc>0?'test':'up')">📝 Tests</div><div class="ni" data-v="dash" onclick="go('dash')">📊 Dashboard</div>
+<button class="go" onclick="go('up')">⚡ Start Now</button></aside>
+<main class="mn"><div class="top"><input type="text" placeholder="🔍 Search topics, episodes, characters"><span class="pill" id="xp"></span></div><div id="app"></div></main></div>
+<script>
+const SAMPLE=`Subject: Java
+Unit 1: OOP Concepts
+Classes
+Objects
+Methods
+Constructors
+Unit 2: Inheritance
+Inheritance basics
+Polymorphism
+Abstraction`;
+const H=[{e:'🐱',n:'Gadget Buddy',d:'A futuristic cartoon friend'},{e:'😜',n:'Prankster Pip',d:'Funny, playful situations'},{e:'🎮',n:'Game World',d:'Game-style missions'},{e:'🤖',n:'Learn O Robot',d:'Your AI buddy'},{e:'✨',n:'Create Your Own',d:'Describe an original character'}];
+const CN={classes:'Classes',objects:'Objects',constructors:'Constructors'};
+const QS={
+classes:[{t:'mcq',q:'What is a class in Java?',o:['An object','A blueprint','A loop','A variable'],a:1},{t:'tf',q:'Defining a class creates an object automatically.',a:false}],
+objects:[{t:'fill',q:'Fill in the blank: Robot r = ___ Robot();',a:'new'},{t:'mcq',q:'Two objects from one class share…',o:['The same blueprint','The same field values','Nothing'],a:0}],
+constructors:[{t:'mcq',q:'A constructor has…',o:['Any name and a return type','The class name and no return type','Only static methods'],a:1},{t:'tf',q:'A constructor runs when an object is created.',a:true}]};
+const RQ={
+classes:[{t:'tf',q:'A class describes fields and methods.',a:true},{t:'mcq',q:'Class vs object?',o:['Class = plan, object = real thing','Same thing','Object = plan'],a:0}],
+objects:[{t:'mcq',q:'Robot a=new Robot(); Robot b=new Robot(); how many objects?',o:['1','2','0'],a:1},{t:'fill',q:'An object is an ___ of a class.',a:'instance'}],
+constructors:[{t:'mcq',q:'Why use a constructor?',o:['Initialise a new object','Delete objects','Print output'],a:0},{t:'tf',q:'Constructors can take parameters.',a:true}]};
+const REV={classes:['📐','Class = Blueprint','Only the plan: class Robot { String name; void walk(){} }. No robot exists yet.'],objects:['🤖','Object = Instance','Robot r = new Robot(); builds a real robot. Many objects, one class.'],constructors:['🔧','Constructor = Setup routine','Robot(String n){ name = n; } runs on new Robot("Rex") and sets up the object.']};
+const S={v:'home',hero:H[3],own:'',text:'',units:[],ans:{},res:null,ans2:{},res2:null,sc:0,pick:null,xp:0,mins:0,left:0,tm:null,pct:0,file:''};
+const $=i=>document.getElementById(i),A=$('app');
+function go(v){clearInterval(S.tm);S.v=v;R()}
+function R(){document.querySelectorAll('.ni').forEach(n=>n.classList.toggle('on',n.dataset.v==S.v||(S.v=='ep'&&n.dataset.v=='gen')));$('xp').textContent='⭐ '+S.xp+' XP · 🔥 7';V[S.v]();scrollTo(0,0)}
+const hn=()=>S.hero.n=='Create Your Own'?(S.own||'Your Character'):S.hero.n;
+function lvl(p){return p>=80?['Strong','s','var(--ok)','🟢']:p>=50?['Developing','m','var(--md)','🟡']:['Needs Revision','wk','var(--bad)','🔴']}
+function parse(t){let sub='Your Subject';const u=[];t.split('\n').map(x=>x.trim()).filter(Boolean).forEach(l=>{let m=l.match(/^(subject|course)\s*:\s*(.+)/i);if(m){sub=m[2];return}if(/^unit/i.test(l))u.push({t:l,k:[]});else{if(!u.length)u.push({t:'Unit 1',k:[]});u[u.length-1].k.push(l)}});S.sub=sub;return u}
+const V={
+home(){A.innerHTML=`<div class="hero"><div class="mas">🤖</div><h1>Turn your syllabus into a series.</h1><p class="mu" style="font-size:16px">Upload what you need to learn. Choose a character. Let AI create your learning episode.</p><button class="big" onclick="go('up')">📤 Upload My Syllabus</button></div>`},
+up(){A.innerHTML=`<div class="card"><h2>📤 Drop your syllabus here</h2><div class="drop" onclick="$('f').click()"><div style="font-size:40px">📄</div><b id="fn">${S.file||'Browse Files'}</b><div class="mu">PDF · DOCX · PPT · Images · Text</div></div><input id="f" type="file" hidden onchange="fl(this)"><p class="mu">Or paste syllabus (leave blank to use a sample Java syllabus):</p><textarea id="tx" placeholder="Subject: ...&#10;Unit 1: ...&#10;Topic">${S.text}</textarea><div class="acts"><button onclick="ana()">Analyse syllabus</button></div></div>`},
+detect(){const n=S.units.reduce((a,u)=>a+u.k.length,0);A.innerHTML=`<div class="card"><h2>🧠 AI detected</h2><div class="stats"><div>Subject<b>${S.sub}</b></div><div>Units<b>${S.units.length}</b></div><div>Topics<b>${n}</b></div><div>Est. learning time<b>${Math.round(n*.6)} hours</b></div></div><p class="mu">Fix anything that looks wrong.</p>${S.units.map((u,i)=>`<b>${u.t}</b>${u.k.map((k,j)=>`<div class="tp"><input type="text" value="${k}" oninput="S.units[${i}].k[${j}]=this.value"><button class="g" onclick="S.units[${i}].k.splice(${j},1);R()">✕</button></div>`).join('')}<button class="g" onclick="S.units[${i}].k.push('New topic');R()">+ topic</button>`).join('<br><br>')}<div class="acts"><button onclick="go('chars')">Continue →</button></div></div>`},
+chars(){A.innerHTML=`<div class="card"><h2>🎭 Created Characters</h2><p class="mu">Who do you want to learn with?</p><div class="gal">${H.map((h,i)=>`<div class="cd ${S.hero==h?'sel':''}" onclick="S.hero=H[${i}];R()">${S.hero==h?'<span class="ck">✓</span>':''}${svg(i)}<b>${h.n}</b><div class="mu">${h.d}</div></div>`).join('')}</div>${S.hero.n=='Create Your Own'?`<p><input type="text" id="ow" placeholder="A funny blue robot who loves science" value="${S.own}" oninput="S.own=this.value"></p>`:''}<p class="mu">Demo uses original characters. Licensed characters need permission for commercial use.</p><div class="acts"><button onclick="go('gen')">Continue →</button></div></div>`},
+gen(){A.innerHTML=`<div class="card"><h2>Create My Learning Episode</h2><p>Subject: <b>${S.sub}</b><br>Topic: <b>Classes &amp; Objects</b><br>Character: <b>${hn()}</b><br>Level: Beginner · Duration: 3 minutes</p><div class="acts"><button onclick="mk()">✨ Generate Episode</button></div><div id="pg"></div></div>`},
+ep(){const h=hn(),sc=SC(h),c=sc[S.sc];A.innerHTML=`<div class="card"><h2>🎬 ${h}'s ${S.sub} Adventure</h2><div class="mu">Episode 1: The Mystery of Classes &amp; Objects · Scene ${S.sc+1}/${sc.length}</div>${room(c)}${c.ask?`<div class="q"><b>🧠 ${c.ask.q}</b>${c.ask.o.map((o,i)=>`<button class="opt ${S.pick===i?'sel':''}" onclick="S.pick=${i};R()">${o}</button>`).join('')}${S.pick!==null?`<p class="${S.pick==c.ask.a?'s':'wk'}"><b>${S.pick==c.ask.a?'✅ '+c.ask.fb:'Not quite. '+c.ask.fb}</b></p>`:''}</div>`:''}<div class="acts"><button class="g" ${S.sc?'':'disabled'} onclick="S.sc--;S.pick=null;R()">◀ Back</button>${S.sc<sc.length-1?`<button ${c.ask&&S.pick===null?'disabled':''} onclick="S.sc++;S.pick=null;R()">Next ▶</button>`:`<button onclick="S.xp+=50;go('test')">🎉 Episode complete → Test</button>`}</div></div>`},
+test(){A.innerHTML=`<div class="card"><h2>⏱️ Let's see what you learned</h2><p>Focus Mode:</p><select id="fm"><option value="0">Off</option><option>5</option><option>10</option><option>20</option><option>30</option></select><div class="acts"><button onclick="S.mins=+$('fm').value;S.left=S.mins*60;S.ans={};S.v='t1';tq()">Start test</button></div></div>`},
+t1(){tq()},
+report(){const w=wk();A.innerHTML=`<div class="card"><h2>📊 Your Learning Report</h2><h1>${tot(S.res)}%</h1>${bars(S.res)}<p><b>${w.length?'You need more practice with '+w.map(k=>CN[k]).join(', ')+'.':'All topics strong!'}</b></p><div class="acts">${w.length?'<button onclick="go(\'rev\')">🔄 Fix My Weak Topic</button>':''}<button class="g" onclick="go(\'dash\')">Dashboard</button></div></div>`},
+rev(){const w=wk();A.innerHTML=`<div class="card"><h2>🎬 ${hn()}'s Revision Mission</h2><div class="mu">About 2:30 · only your weak topics</div>${w.map(k=>`<div class="scene" style="margin-top:10px"><div class="e">${REV[k][0]}</div><div class="sub">🎙️ ${REV[k][2]}</div><br><span class="cc">${REV[k][1]}</span></div>`).join('')}<div class="acts"><button onclick="S.ans2={};S.v='t2';tq()">Retest</button></div></div>`},
+t2(){tq()},
+done(){const w=wk(),pv={};w.forEach(k=>pv[k]=S.res[k]);A.innerHTML=`<div class="card"><h2>📈 Learning score improved</h2>${bars(S.res2,pv)}<div class="acts"><button onclick="go('dash')">See my dashboard</button></div></div>`},
+dash(){const j=S.res2||S.res,jp=j?tot(j):0,weakk=S.res?wk().filter(k=>!S.res2||S.res2[k].c/S.res2[k].t<.8):[];
+const sb=[[S.sub||'Java',jp||30],['Mathematics',60],['Physics',40]];
+A.innerHTML=`<div class="card"><h2>My Learning</h2>${sb.map(s=>`<div class="row"><span>${s[0]}</span><span>${s[1]}%</span></div><div class="bar"><div style="width:${s[1]}%;background:var(--ac)"></div></div>`).join('')}</div><div class="card"><h2>🤖 AI Recommendation</h2><p>${weakk.length?'🔴 You are struggling with '+CN[weakk[0]]+'. Try the revision mission.':'Nice work! Next up: Polymorphism Battle.'}</p></div><div class="card"><h2>🏆 Progress</h2><div class="stats"><div>XP<b>⭐ ${S.xp}</b></div><div>Streak<b>🔥 7 days</b></div><div>Level<b>${1+Math.floor(S.xp/200)}</b></div><div>Badges<b>${S.xp>=150?'🏆 First Steps':'—'}${S.res2&&tot(S.res2)>=80?' 🎖️ Mastery':''}</b></div></div></div>`}};
+function fl(i){S.file=i.files[0]?i.files[0].name:'';let f=i.files[0];if(f&&/\.(txt|md|csv)$/i.test(f.name)){let r=new FileReader;r.onload=()=>{S.text=r.result;R()};r.readAsText(f)}else{$('fn').textContent=S.file}}
+function ana(){S.text=$('tx').value;A.innerHTML=`<div class="card"><div class="mas" style="text-align:center">🤖</div><h2 style="text-align:center">🔄 AI is understanding your syllabus...</h2></div>`;setTimeout(()=>{S.units=parse(S.text.trim()||SAMPLE);go('detect')},1200)}
+function mk(){const st=['🧠 Understanding topic...','✍️ Writing story...','🎭 Creating scenes...','🎙️ Creating dialogue...','🎬 Generating animation...','📝 Adding educational explanations...'];let p=0;S.tm=setInterval(()=>{p+=6;if(p>=100){clearInterval(S.tm);$('pg').innerHTML='<h2>🎉 Your Episode Is Ready!</h2><button onclick="S.sc=0;S.pick=null;go(\'ep\')">▶️ Play Episode</button>';return}$('pg').innerHTML=`<p>${st[Math.min(5,Math.floor(p/17))]}</p><div class="bar"><div style="width:${p}%;background:var(--ac)"></div></div><b>${p}%</b>`},150)}
+function SC(h){return[{e:'🏗️',c:'Class = Blueprint',s:`${h}: "Before creating a robot, we need a blueprint!"`},{e:'🤖',c:'Object = Instance of the class',s:`${h}: "Now we use new to build a real robot from the blueprint."`,ask:{q:'What do you think happens next?',o:['Each robot needs its own blueprint','Many robots come from one blueprint'],a:1,fb:'One class, many objects.'}},{e:'🔧',c:'Constructor = Setup routine',s:`${h}: "A constructor sets up every new robot automatically."`}]}
+function list(set){const o=[];(set==RQ?wk():Object.keys(CN)).forEach(k=>set[k].forEach((q,i)=>o.push({...q,k,id:k+i})));return o}
+function tq(){const r=S.v=='t2',L=list(r?RQ:QS),st=r?S.ans2:S.ans;A.innerHTML=`<div class="card">${S.mins?'<div class="tm" id="tmr"></div>':''}<h2>📝 ${r?'Retest':'Test'}</h2>${L.map((q,n)=>`<div class="q"><b>${n+1}. ${q.q}</b>${q.t=='fill'?`<input type="text" value="${st[q.id]||''}" oninput="(${r}?S.ans2:S.ans)['${q.id}']=this.value">`:(q.t=='tf'?['True','False']:q.o).map((o,i)=>`<button class="opt ${st[q.id]===(q.t=='tf'?i==0:i)?'sel':''}" onclick="(${r}?S.ans2:S.ans)['${q.id}']=${q.t=='tf'?(i==0):i};tq()">${o}</button>`).join('')}</div>`).join('')}<div class="acts"><button onclick="sub()">Submit</button></div></div>`;
+if(S.mins&&!r){tt();clearInterval(S.tm);S.tm=setInterval(()=>{S.left--;tt();if(S.left<=0){clearInterval(S.tm);sub()}},1000)}}
+function tt(){const e=$('tmr');if(e)e.textContent='⏱️ '+Math.floor(S.left/60)+':'+String(S.left%60).padStart(2,'0')}
+function sc(L,st){const r={};L.forEach(q=>{r[q.k]=r[q.k]||{c:0,t:0};r[q.k].t++;const a=st[q.id],ok=q.t=='fill'?String(a||'').trim().toLowerCase()==q.a:a===q.a;if(ok)r[q.k].c++});return r}
+function sub(){clearInterval(S.tm);if(S.v=='t2'){S.res2=sc(list(RQ),S.ans2);S.xp+=Object.values(S.res2).reduce((a,x)=>a+x.c*10,0);go('done')}else{S.res=sc(list(QS),S.ans);S.xp+=Object.values(S.res).reduce((a,x)=>a+x.c*10,0);go('report')}}
+const tot=r=>{let c=0,t=0;for(const k in r){c+=r[k].c;t+=r[k].t}return Math.round(c/t*100)};
+const wk=()=>Object.keys(S.res).filter(k=>S.res[k].c/S.res[k].t<.8);
+function bars(r,pv){return Object.keys(r).map(k=>{const p=Math.round(r[k].c/r[k].t*100),l=lvl(p);return `<div class="row"><span>${CN[k]}</span><span class="${l[1]}">${pv?Math.round(pv[k].c/pv[k].t*100)+'% → ':''}${p}% ${l[3]} ${l[0]}</span></div><div class="bar"><div style="width:${p}%;background:${l[2]}"></div></div>`}).join('')}
+const SV=[
+'<svg viewBox="0 0 80 90"><line x1="40" y1="4" x2="40" y2="14" stroke="#888" stroke-width="3"/><circle cx="40" cy="4" r="4" fill="#ffd54a"/><circle cx="40" cy="38" r="28" fill="#ffa94d"/><circle cx="40" cy="44" r="18" fill="#ffe3bf"/><circle cx="31" cy="34" r="6" fill="#fff" stroke="#123" stroke-width="2"/><circle cx="49" cy="34" r="6" fill="#fff" stroke="#123" stroke-width="2"/><circle cx="32" cy="35" r="3" fill="#123"/><circle cx="48" cy="35" r="3" fill="#123"/><path d="M32 50Q40 58 48 50" stroke="#123" stroke-width="3" fill="none"/><rect x="24" y="66" width="32" height="22" rx="8" fill="#e8873a"/></svg>',
+'<svg viewBox="0 0 80 90"><circle cx="40" cy="38" r="28" fill="#ffd9a8"/><path d="M12 32Q20 6 40 8Q62 6 68 32Q52 20 12 32Z" fill="#3b2a1a"/><circle cx="30" cy="40" r="4" fill="#222"/><circle cx="50" cy="40" r="4" fill="#222"/><path d="M30 54Q40 63 50 54" stroke="#222" stroke-width="3" fill="none"/><rect x="22" y="66" width="36" height="22" rx="8" fill="#e8483b"/></svg>',
+'<svg viewBox="0 0 80 90"><ellipse cx="40" cy="50" rx="28" ry="30" fill="#5fcf7a"/><circle cx="30" cy="40" r="6" fill="#fff"/><circle cx="50" cy="40" r="6" fill="#fff"/><circle cx="31" cy="41" r="3" fill="#123"/><circle cx="49" cy="41" r="3" fill="#123"/><path d="M28 58Q40 68 52 58" stroke="#123" stroke-width="3" fill="none"/><path d="M22 22l6 8-10 0zM40 14l6 8-12 0zM58 22l6 8-10 0z" fill="#2e9e4f"/></svg>',
+'<svg viewBox="0 0 80 90"><line x1="40" y1="4" x2="40" y2="14" stroke="#888" stroke-width="3"/><circle cx="40" cy="4" r="4" fill="#ffd54a"/><rect x="12" y="14" width="56" height="44" rx="14" fill="#8b6cf6"/><circle cx="30" cy="34" r="8" fill="#fff"/><circle cx="50" cy="34" r="8" fill="#fff"/><circle cx="31" cy="35" r="4" fill="#123"/><circle cx="51" cy="35" r="4" fill="#123"/><path d="M30 48Q40 54 50 48" stroke="#fff" stroke-width="3" fill="none"/><rect x="20" y="60" width="40" height="26" rx="8" fill="#6a4fd6"/></svg>',
+'<svg viewBox="0 0 80 90"><text x="40" y="60" font-size="54" text-anchor="middle">✨</text></svg>'];
+const svg=i=>SV[i];
+function room(c){const i=H.indexOf(S.hero);return `<div class="room"><div class="bd"><div class="e">${c.e}</div><b>${c.c}</b></div><div class="chr">${svg(i)}</div><div class="sub">🎙️ ${c.s}</div></div>`}
+R();
+</script></body></html>

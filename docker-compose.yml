@@ -1,0 +1,12 @@
+# Runs the Hindsight memory server. Its own LLM extracts facts when we call retain().
+services:
+  hindsight:
+    image: ghcr.io/vectorize-io/hindsight:latest
+    ports:
+      - "8888:8888"   # API
+      - "9999:9999"   # UI (inspect memory banks)
+    environment:
+      HINDSIGHT_API_LLM_API_KEY: ${HINDSIGHT_LLM_API_KEY}
+      HINDSIGHT_API_LLM_MODEL: ${HINDSIGHT_LLM_MODEL:-o3-mini}
+    volumes:
+      - ./.hindsight-docker:/home/hindsight/.pg0
